@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Smal Chat</title>
+  </head>
+  <body>
+    <div class="headline">
+      <h1>Wellcome to the Small Chat app</h1>
+      <label for="userName">Whats your name? </label><input type="text" id="userName" value="newUser" onchange="updateUserName()">
+    </div>
+    <div class="container">
+      <p id="display">Welcome</p>
+      <div class="input">
+        <input type="text" id="console" placeholder="Type your text here">
+        <button type="button" id="submit" onclick="sendConsole()">Submit</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
