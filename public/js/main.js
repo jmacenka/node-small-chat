@@ -65,7 +65,7 @@ var updateChatRoom = function(){
     name:userName,
     chatRoom:chatRoom,
     prevChatRoom:prevChatRoom,
-    text:`changed from ${prevChatRoom} to ${chatRoom}`
+    text:`entered the chatroom ${chatRoom}.`
   });
   updateChatRoomDisplay();
 };

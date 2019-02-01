@@ -77,6 +77,11 @@ io.on('connection', (socket)=>{
     userNameClient = msg.name;
     broadcastServerMsg(socket, msg, {text:'changed your chat name to '+msg.name, name:'Server'});
   });
+
+  socket.on('changedChatRoom', (msg)=>{
+    console.log(`${getTimestamp()}: ${msg.name} changed chatroom to ${msg.chatRoom}.`);
+    broadcastServerMsg(socket, msg, {text:'you entered the chatroom '+msg.chatRoom, name:'Server'});
+  });
 });
 
 // start the server
