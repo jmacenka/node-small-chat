@@ -8,16 +8,22 @@
   <body>
     <div class="headline">
       <h1>Small Chat</h1>
-      <p>by Jan Macenka</p><br>
-      <input type="text" id="userName" value="newUser" onchange="updateUserName()">
-      <br><label for="userName">Your chat name</label>
+      <p>by Jan Macenka</p>
+      <div class="container floatLeft">
+        <label for="userName">Your chat name</label>
+        <input type="text" id="userName" value="newUser" onchange="updateUserName()" class="inputField">
+      </div>
+      <div class="container floatRight">
+        <label for="chatRoom">Your chatroom</label>
+        <input type="text" id="chatRoom" value="public" onchange="updateChatRoom()" class="inputField">
+      </div>
     </div>
     <div class="backgroundbox">
       <p id="clientsOnline"></p>
       <p id="display">Welcome to the public chatroom</p>
     </div>
     <div class="input">
-      <input type="text" id="console" placeholder="Type your text here">
+      <input type="text" id="console" placeholder="Type your text here" class="inputField">
       <input type="submit" id="submitBtn" onclick="sendConsole()" value="send">
     </div>
     <script src="/socket.io/socket.io.js"></script>
