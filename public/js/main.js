@@ -1,7 +1,7 @@
 console.log('Started Session.');
 
 // Generate a dynamic username and update the display
-var userName = new Date().getTime().toString(16).toUpperCase().slice(7);
+var userName = 'User' + new Date().getTime().toString(10).slice(9);
 document.getElementById('userName').value = userName;
 
 // variable stuff
@@ -22,6 +22,11 @@ var getObjectById = function(id){
 var updateDisplay = function(msg){
   var newText = `<br> ${msg.timestamp} <b><span class="${msg.name.toLowerCase()}">${msg.name}</span></b>: ${msg.text}`
   getObjectById('display').innerHTML += newText;
+  chatNumber = 'Only you are currently in this chatroom.'
+  if (msg.clientsOnline > 1){
+    chatNumber = `${msg.clientsOnline} people are in this chatroom`;
+  }
+  getObjectById('clientsOnline').innerHTML = chatNumber;
   document.getElementById('display').scrollTop = document.getElementById('display').scrollHeight;
 };
 
@@ -31,6 +36,7 @@ var updateUserName = function(){
   getObjectById('console').placeholder = userName + ':'
   socket.emit('changedUserName',{
     name:userName,
+    oldName:prevUserName,
     text:'<i>' + prevUserName + '</i> changed name to <i>' + userName +'</i>',
   });
   console.log(`The username changed to ${userName}`);
