@@ -14,9 +14,14 @@ var server = http.createServer(app);
 var io = socketIO(server);
 app.use(express.static(staticDir));
 
+var emitServerMsg = function(msg){
+  msg.timestamp = new Date().toTimeString().split(' ')[0];
+  io.emit('serverMsg', msg);
+};
+
 // sockets
 io.on('connect', (socket)=>{
-  socket.emit('serverMsg',{
+  emitServerMsg({
     name:'Server',
     text:'Server is online.'
   });
@@ -26,13 +31,22 @@ io.on('connection', (socket)=>{
   console.log('A Client connected');
   socket.on('message',(msg)=>{
     msg.text = 'joined the chat.'
-    io.emit('serverMsg',msg);
+    emitServerMsg(msg);
   });
+
+  socket.on('clientMessage', (msg)=>{
+    emitServerMsg(msg);
+  });
+
+  socket.on('changedUserName', (msg)=>{
+    emitServerMsg(msg);
+  });
+
 });
 
 io.on('changedUserName', (msg)=>{
   console.log('Changed username: ',JSON.stringify(msg));
-  io.emit('serverMsg',msg);
+  emitServerMsg(msg);
 });
 
 server.listen(port,()=>{

@@ -11,10 +11,10 @@
       <label for="userName">Whats your name? </label><input type="text" id="userName" value="newUser" onchange="updateUserName()">
     </div>
     <div class="container">
-      <p id="display">Welcome</p>
+      <p id="display">Welcome to the chat client</p>
       <div class="input">
-        <input type="text" id="console" placeholder="Type your text here">
-        <button type="button" id="submit" onclick="sendConsole()">Submit</button>
+        <input type="text" id="console" placeholder="newUser: Type your text here">
+        <input type="submit" id="submitBtn" onclick="sendConsole()" value="send">
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
