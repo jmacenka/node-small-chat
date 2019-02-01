@@ -23,7 +23,7 @@ var emitServerMsg = function(msg){
 io.on('connect', (socket)=>{
   emitServerMsg({
     name:'Server',
-    text:'Server is online.'
+    text:'Established connection to server.'
   });
 });
 
