@@ -47,7 +47,6 @@ var updateChatRoomDisplay = function(){
 var updateUserName = function(){
   let prevUserName = userName;
   userName = getObjectById('userName').value;
-  getObjectById('console').placeholder = userName + ':'
   socket.emit('changedUserName',{
     name:userName,
     chatRoom:chatRoom,
@@ -95,4 +94,21 @@ socket.on('connect', function(){
 socket.on('serverMsg',function(msg){
   console.log('Recieved from server: ', msg);
   updateDisplay(msg);
+});
+
+socket.on('disconnect',function(){
+  console.log('List connection to server');
+  updateDisplay({
+    name:'Server',
+    text:'Lost connection to server.',
+    timestamp:new Date().toTimeString().split(' ')[0]
+  });
+});
+
+socket.on('changedChatRoom',function(msg){
+  console.log('someone left the chatroom');
+  if (msg.prevChatRoom === chatRoom){
+    console.log('and we knew him');
+    updateDisplay({name:'Server',text:`%{msg.name} left the chatroom.`});
+  };
 });

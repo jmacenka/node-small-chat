@@ -48,8 +48,11 @@ var broadcastServerMsg = function(socket, msg, reply){
 io.on('connection', (socket)=>{
   var userNameServer = '';
   var userNameClient = '';
+  var chatRoomClient = '';
+
   clientsOnline += 1;
   visitorCounter += 1;
+
   socket.on('conAck',(msg)=>{
     userNameServer = msg.name;
     userNameClient = msg.name;
@@ -64,6 +67,7 @@ io.on('connection', (socket)=>{
     emitServerMsg({
       name:userNameClient,
       text:'left the chat.',
+      chatRoom:chatRoomClient,
     });
   });
 
@@ -80,8 +84,10 @@ io.on('connection', (socket)=>{
 
   socket.on('changedChatRoom', (msg)=>{
     console.log(`${getTimestamp()}: ${msg.name} changed chatroom to ${msg.chatRoom}.`);
+    chatRoomClient = msg.chatRoom;
     broadcastServerMsg(socket, msg, {text:'you entered the chatroom '+msg.chatRoom, name:'Server'});
   });
+
 });
 
 // start the server
