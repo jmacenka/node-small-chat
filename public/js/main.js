@@ -1,12 +1,20 @@
 console.log('Started Session.');
 
+// Generate a dynamic username and update the display
 var userName = new Date().getTime().toString(16).toUpperCase().slice(7);
-
 document.getElementById('userName').value = userName;
 
+// variable stuff
 var socket = io();
 
+document.getElementById('console').addEventListener("keyup", function(event){
+  event.preventDefault();
+  if (event.keyCode == 13){
+    sendConsole();
+  }
+});
 
+// utility functions
 var getObjectById = function(id){
   return document.getElementById(id)
 };
@@ -23,7 +31,7 @@ var updateUserName = function(){
   getObjectById('console').placeholder = userName + ':'
   socket.emit('changedUserName',{
     name:userName,
-    text:prevUserName + ' changed name to ' + userName,
+    text:'<i>' + prevUserName + '</i> changed name to <i>' + userName +'</i>',
   });
   console.log(`The username changed to ${userName}`);
 }
@@ -40,8 +48,9 @@ var sendConsole = function(){
   getObjectById('console').value = '';
 }
 
+// socket handling
 socket.on('connect', function(){
-  socket.emit('message',{
+  socket.emit('conAck',{
     connected:true,
     name:userName,
   });
@@ -50,11 +59,4 @@ socket.on('connect', function(){
 socket.on('serverMsg',function(msg){
   console.log('Recieved from server: ', msg);
   updateDisplay(msg);
-});
-
-document.getElementById('console').addEventListener("keyup", function(event){
-  event.preventDefault();
-  if (event.keyCode == 13){
-    sendConsole();
-  }
 });
