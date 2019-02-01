@@ -9,6 +9,7 @@ const staticDir = path.join(__dirname,'..','public')
 let port = process.env.PORT || 3000;
 
 // variable stuff
+var clientsOnline = 0;
 var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
@@ -19,16 +20,27 @@ var emitServerMsg = function(msg){
   io.emit('serverMsg', msg);
 };
 
+var privateServerMsg = function(socket, msg){
+  msg.timestamp = new Date().toTimeString().split(' ')[0];
+  socket.emit('serverMsg', msg);
+};
+
 // sockets
 io.on('connect', (socket)=>{
-  emitServerMsg({
+  privateServerMsg(socket,{
     name:'Server',
     text:'Established connection to server.'
   });
 });
 
+io.on('disconect', (socket)=>{ // TODO: Close Event funktioniert noch nicht richtig.
+  clientsOnline -= 1;
+  console.log('A Client connected. Total online: ', clientsOnline);
+});
+
 io.on('connection', (socket)=>{
-  console.log('A Client connected');
+  clientsOnline += 1;
+  console.log('A Client connected. Total online: ', clientsOnline);
   socket.on('message',(msg)=>{
     msg.text = 'joined the chat.'
     emitServerMsg(msg);

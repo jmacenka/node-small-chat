@@ -1,27 +1,33 @@
 #display {
   overflow-y: auto;
-  height: 200px;
-  margin: 2% 20% 2% 20%;
-  padding: 5%;
-  background-color: #6c698d;
-  box-shadow: 5px 5px;
-  border-radius: 4px 6px;
+  height: 15vw;
 }
 
 #console {
   width: 80%;
   border: 0px;
+  margin-left: 2%;
   background-color: #9694b2;
   box-shadow: 2px 2px;
   border-radius: 1px 2px;
 }
 
 #submitBtn {
-  width: calc(20% - 10px);
-  border: 0px;
+  width: calc(18% - 20px);
+  /* border: 2px; */
   background-color: #53516d;
   box-shadow: 2px 2px;
-  border-radius: 1px 2px;
+  border-radius: 1px 1px;
+}
+
+#submitBtn:hover{
+  background-color: lightgray;
+}
+
+#userName {
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 5%;
 }
 
 .input {
@@ -29,10 +35,18 @@
 }
 
 .headline {
-  padding: 5% 0 5% 0;
+  padding: 5% 0 2% 0;
   text-align: center;
 }
 
 .server {
   color: #af1d5d;
+}
+
+.backgroundbox {
+  margin: 2% 20% 2% 20%;
+  padding: 2% 3% 2% 3%;
+  background-color: #6c698d;
+  box-shadow: 5px 5px;
+  border-radius: 4px 6px;
 }

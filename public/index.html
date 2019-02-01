@@ -7,15 +7,16 @@
   </head>
   <body>
     <div class="headline">
-      <h1>Wellcome to the Small Chat app</h1>
-      <label for="userName">Whats your name? </label><input type="text" id="userName" value="newUser" onchange="updateUserName()">
+      <h1>Small Chatt</h1>
+      <label for="userName">Your chat name</label><br>
+      <input type="text" id="userName" value="newUser" onchange="updateUserName()">
     </div>
-    <div class="container">
+    <div class="backgroundbox">
       <p id="display">Welcome to the chat client</p>
-      <div class="input">
-        <input type="text" id="console" placeholder="newUser: Type your text here">
-        <input type="submit" id="submitBtn" onclick="sendConsole()" value="send">
-      </div>
+    </div>
+    <div class="input">
+      <input type="text" id="console" placeholder="Type your text here">
+      <input type="submit" id="submitBtn" onclick="sendConsole()" value="send">
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>

@@ -20,7 +20,7 @@ var updateDisplay = function(msg){
 var updateUserName = function(){
   let prevUserName = userName;
   userName = getObjectById('userName').value;
-  getObjectById('console').placeholder = userName + ': Type your text here'
+  getObjectById('console').placeholder = userName + ':'
   socket.emit('changedUserName',{
     name:userName,
     text:prevUserName + ' changed name to ' + userName,
@@ -30,6 +30,7 @@ var updateUserName = function(){
 
 var sendConsole = function(){
   var msg = getObjectById('console').value;
+  if (!msg.length > 0) return;
   var sendObj = {
     name:userName,
     text:msg
