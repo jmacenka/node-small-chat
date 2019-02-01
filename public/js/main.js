@@ -6,6 +6,7 @@ document.getElementById('userName').value = userName;
 
 // initialize a chatroom to be changed by the user
 var chatRoom = document.getElementById('chatRoom').value
+var currentOnline = 1;
 
 // variable stuff
 var socket = io();
@@ -27,15 +28,20 @@ var updateDisplay = function(msg){
   if (msg.chatRoom === chatRoom || msg.name === 'Server'){
     var newText = `<br> ${msg.timestamp} <b><span class="${msg.name.toLowerCase()}">${msg.name}</span></b>: ${msg.text}`
     getObjectById('display').innerHTML += newText;
-    chatNumber = 'Only you are currently in this chatroom.'
-    if (msg.clientsOnline > 1){
-      chatNumber = `${msg.clientsOnline} people are in this chatroom`;
-    }
-    getObjectById('clientsOnline').innerHTML = chatNumber;
+    currentOnline = msg.clientsOnline;
+    updateChatRoomDisplay();
     document.getElementById('display').scrollTop = document.getElementById('display').scrollHeight;
   } else {
     return;
   };
+};
+
+var updateChatRoomDisplay = function(){
+  chatNumber = `Only you are online. You are in the chatroom ${chatRoom}.`
+  if (currentOnline > 1){
+    chatNumber = `${currentOnline} people are online. You are in the chatroom ${chatRoom}.`;
+  }
+  getObjectById('clientsOnline').innerHTML = chatNumber;
 };
 
 var updateUserName = function(){
@@ -61,7 +67,8 @@ var updateChatRoom = function(){
     prevChatRoom:prevChatRoom,
     text:`changed from ${prevChatRoom} to ${chatRoom}`
   });
-}
+  updateChatRoomDisplay();
+};
 
 var sendConsole = function(){
   var msg = getObjectById('console').value;

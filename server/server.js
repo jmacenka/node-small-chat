@@ -54,7 +54,7 @@ io.on('connection', (socket)=>{
     userNameServer = msg.name;
     userNameClient = msg.name;
     console.log(`${getTimestamp()}: ${userNameServer} connected. Online: ${clientsOnline}. Total visitors ${visitorCounter}.`);
-    msg.text = 'joined the chat.'
+    msg.text = 'came online.'
     broadcastServerMsg(socket, msg, {text:'Welcome ' + msg.name});
   });
 
