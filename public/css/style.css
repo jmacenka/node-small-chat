@@ -14,14 +14,13 @@
 
 #submitBtn {
   width: calc(18% - 20px);
-  /* border: 2px; */
   background-color: #53516d;
   box-shadow: 2px 2px;
   border-radius: 1px 1px;
 }
 
 #submitBtn:hover{
-  background-color: lightgray;
+  background-color: #7b78a3;
 }
 
 #userName {
