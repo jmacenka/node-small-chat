@@ -29,6 +29,12 @@
   border-radius: 5%;
 }
 
+#userName {
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 5%;
+}
+
 .input {
   margin: 15px 20% 0 20%;
 }

@@ -29,7 +29,7 @@ var privateServerMsg = function(socket, msg){
 io.on('connect', (socket)=>{
   privateServerMsg(socket,{
     name:'Server',
-    text:'Established connection to server.'
+    text:'Established connection to server'
   });
 });
 
