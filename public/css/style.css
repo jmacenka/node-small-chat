@@ -1,3 +1,7 @@
+body {
+  background-color: #e3e3e3;
+}
+
 #display {
   overflow-y: auto;
   height: 15vw;
@@ -65,4 +69,33 @@
 
 .container {
   margin: 0 10% 0 10%;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-color: #e3e3e3;
+    font-size: 0.65em;
+  }
+  .backgroundbox {
+    margin: 2%;
+  }
+
+  .input {
+    margin: 0;
+  }
+
+  #console {
+    margin-top: 5%;
+    width: 94%;
+  }
+
+  #submitBtn {
+    margin: 2%;
+    width: 98%;
+  }
+
+  #display {
+    overflow-y: auto;
+    height: 40vh;
+  }
 }

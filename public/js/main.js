@@ -37,9 +37,9 @@ var updateDisplay = function(msg){
 };
 
 var updateChatRoomDisplay = function(){
-  chatNumber = `Only you are online. You are in the chatroom ${chatRoom}.`
+  chatNumber = `<i>Only you are online. You are in the chatroom ${chatRoom}.</i>`
   if (currentOnline > 1){
-    chatNumber = `${currentOnline} people are online. You are in the chatroom ${chatRoom}.`;
+    chatNumber = `<i>${currentOnline} people are online. You are in the chatroom ${chatRoom}.</i>`;
   }
   getObjectById('clientsOnline').innerHTML = chatNumber;
 };
