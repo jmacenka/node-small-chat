@@ -1,6 +1,5 @@
 body {
-  background-color: #427aa1;
-  font-family: 'Handlee', cursive;
+  background-color: #e3e3e3;
 }
 
 #display {
@@ -13,7 +12,7 @@ body {
   border: 0px;
   margin-left: 2%;
   padding: 5px;
-  background-color: #ebf2fa;
+  background-color: #9694b2;
   box-shadow: 2px 2px;
   border-radius: 1px 2px;
 }
@@ -23,23 +22,18 @@ body {
   border: 0px;
   padding: 5px;
   margin: 0;
-  background-color: #679436;
+  background-color: #53516d;
   box-shadow: 2px 2px;
   border-radius: 1px 2px;
 }
 
 #submitBtn:hover{
-  background-color: #a5be00;
-}
-
-#clientsOnline {
-  padding-bottom: 1em;
-  border-bottom: double;
+  background-color: #7b78a3;
 }
 
 .inputField {
   text-align: center;
-  background-color: #ebf2fa;
+  background-color: lightgray;
   border-radius: 5%;
 }
 
@@ -48,7 +42,7 @@ body {
 }
 
 .headline {
-  padding: 2% 0 2% 0;
+  padding: 5% 0 2% 0;
   text-align: center;
 }
 
@@ -62,13 +56,13 @@ body {
 }
 
 .server {
-  color: #e36414;
+  color: #af1d5d;
 }
 
 .backgroundbox {
   margin: 2% 20% 2% 20%;
   padding: 1% 4% 1% 4%;
-  background-color: #064789;
+  background-color: #6c698d;
   box-shadow: 5px 5px;
   border-radius: 4px 6px;
 }
@@ -79,6 +73,7 @@ body {
 
 @media only screen and (max-width: 768px) {
   body {
+    background-color: #e3e3e3;
     font-size: 0.65em;
   }
   .backgroundbox {

@@ -1,15 +1,21 @@
 console.log('Started Session.');
 
-// Generate a dynamic username and update the display
-var userName = 'User' + new Date().getTime().toString(10).slice(9);
-document.getElementById('userName').value = userName;
+// Initialize username and chatroom if set to default
+var displayUsername = document.getElementById('userName')
+if (displayUsername.value === '_default'){
+  displayUsername.value = 'User' + new Date().getTime().toString(10).slice(9);
+};
+var userName = displayUsername.value;
 
-// initialize a chatroom to be changed by the user
+var displayChatRoom = document.getElementById('chatRoom')
+if (displayChatRoom.value === '_default'){
+  displayChatRoom.value = 'public';
+}
 var chatRoom = document.getElementById('chatRoom').value
-var currentOnline = 1;
 
 // variable stuff
 var socket = io();
+var currentOnline = 1;
 
 document.getElementById('console').addEventListener("keyup", function(event){
   event.preventDefault();
